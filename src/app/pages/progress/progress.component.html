@@ -5,16 +5,17 @@
                 <h4 class="card-title">Striped Progress bar</h4>
                 <div class="progress m-t-20">
                     <div class="active progress-bar bg-primary progress-bar-striped" 
-                        style="height: 5px;" 
+                        style="height: 5px;"
+                        [style.width]="percent1" 
                         role="progressbar">
                     </div>
-                    <!-- [style.width]="percentage" -->
+                    
                 </div>
 
                 <div class="progress m-t-20">
                     <div class="active progress-bar bg-info progress-bar-striped" 
                         style="height: 5px;" 
-                        
+                        [style.width]="percent2" 
                         role="progressbar">
                     </div>
                 </div>
@@ -28,8 +29,8 @@
     <div class="col-6">
         <div class="card">
             <div class="card-body">
-               
-                <app-increasing [progress]="15"></app-increasing>
+
+                <app-increasing (outputProgress)="progress1 = $event" [progress]="progress1"></app-increasing>
 
             </div>
         </div>
@@ -38,7 +39,7 @@
         <div class="card">
             <div class="card-body">
                 
-                <app-increasing></app-increasing>
+                <app-increasing (outputProgress)="progress2 = $event" [progress]="progress2"></app-increasing>
 
             </div>
         </div>
