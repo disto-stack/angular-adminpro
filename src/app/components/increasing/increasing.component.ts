@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-increasing',
@@ -8,11 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IncreasingComponent {
 
-  progress: number = 50;
-
-  get percentage() {
-    return `${this.progress}%`;
-  }
+  @Input() progress: number = 50;
 
   changeValue(value: number): number | void {
     if (this.progress + value > 100 ) {
