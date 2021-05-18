@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-progress-bar',
   templateUrl: './progress-bar.component.html',
-  styles: [
-  ]
+  styleUrls: ['./progress-bar.component.css']
 })
 export class ProgressBarComponent implements OnInit {
 
