@@ -9,13 +9,15 @@ import { ChartsComponent } from "./charts/charts.component";
 import { PagesComponent } from "./pages.component";
 import { ProgressComponent } from "./progress/progress.component";
 import { RouterModule } from "@angular/router";
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 @NgModule({
     declarations: [
         PagesComponent,
         DashboardComponent,
         ChartsComponent,
-        ProgressComponent
+        ProgressComponent,
+        AccountSettingsComponent
     ],
     imports: [
         CommonModule,
@@ -28,7 +30,8 @@ import { RouterModule } from "@angular/router";
         PagesComponent,
         DashboardComponent,
         ChartsComponent,
-        ProgressComponent
+        ProgressComponent,
+        AccountSettingsComponent
     ]
 })
 export class PagesModule { }
