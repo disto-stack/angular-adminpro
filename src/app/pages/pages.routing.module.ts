@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { GraphicComponent } from './graphic/graphic.component';
+import { ChartsComponent } from './charts/charts.component';
 import { PagesComponent } from './pages.component';
 import { ProgressComponent } from './progress/progress.component';
 
@@ -12,7 +12,7 @@ const routes: Routes = [
     component: PagesComponent, 
     children: [
       { path: '', component: DashboardComponent },
-      { path: 'graphic', component: GraphicComponent },
+      { path: 'charts', component: ChartsComponent },
       { path: 'progress', component: ProgressComponent  },
     ]
   }
