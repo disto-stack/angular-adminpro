@@ -7,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class PagesComponent implements OnInit {
-
-  constructor() { }
-
+  private linkTheme = document.querySelector('#theme');
+  
   ngOnInit(): void {
+    const actualTheme = localStorage.getItem('theme') || './assets/css/colors/default.css'; 
+    this.linkTheme?.setAttribute('href', actualTheme);
   }
-
 }
