@@ -1,19 +1,35 @@
 <div class="row">
     <div class="col-6">
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">Sales</h3>
+        <app-donut-chart
+            title="Sales"
+            [labels]="['Smartphones', 'Laptops', 'Accesories']"
+            [labels-data]="[ [358, 203, 732] ]"
+        ></app-donut-chart>
+    </div>
 
-                <div style="display: block">
-                    <canvas baseChart
-                      [data]="doughnutChartData"
-                      [labels]="doughnutChartLabels"
-                      [chartType]="'doughnut'"
-                      [colors]="chartColors">
-                    </canvas>
-                  </div>
+    <div class="col-6">
+        <app-donut-chart
+            title="Top selling phones"
+            [labels]="['IPhone 12', 'Xiami F3 Pro', 'Samsung Galazy S21']"
+            [labels-data]="[ [158, 100, 100] ]"
+        ></app-donut-chart>
+    </div>
+</div>
 
-            </div>
-        </div>
+<div class="row">
+    <div class="col-6">
+        <app-donut-chart
+            title="Top selling Laptops"
+            [labels]="['Macbook Pro', 'Huawei Matebook X', 'ASUS ROG']"
+            [labels-data]="[ [101, 92, 10] ]"
+        ></app-donut-chart>
+    </div>
+
+    <div class="col-6">
+        <app-donut-chart
+            title="Top selling Accesories"
+            [labels]="['Airpods', 'Smartwatch', 'Huawei Fit']"
+            [labels-data]="[ [345, 173, 214] ]"
+        ></app-donut-chart>
     </div>
 </div>

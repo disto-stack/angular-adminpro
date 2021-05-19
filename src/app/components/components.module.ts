@@ -1,20 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IncreasingComponent } from './increasing/increasing.component';
 import { FormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
+
+import { IncreasingComponent } from './increasing/increasing.component';
+import { DonutChartComponent } from './donut-chart/donut-chart.component';
 
 
 
 @NgModule({
   declarations: [
-    IncreasingComponent
+    IncreasingComponent,
+    DonutChartComponent
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   exports: [
-    IncreasingComponent
+    IncreasingComponent,
+    DonutChartComponent
   ]
 })
 export class ComponentsModule { }
