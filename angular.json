@@ -102,5 +102,10 @@
       }
     }
   },
-  "defaultProject": "adminpro"
+  "defaultProject": "adminpro",
+  "cli": {
+    "warnings": {
+      "versionMismatch": false
+    }
+  }
 }
