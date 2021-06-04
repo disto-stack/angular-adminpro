@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-promises-rxjs',
-  templateUrl: './promises-rxjs.component.html',
+  selector: 'app-promises',
+  templateUrl: './promises.component.html',
   styles: [
   ]
 })
-export class PromisesRxjsComponent implements OnInit {
+export class PromisesComponent implements OnInit {
 
   constructor() { }
 
@@ -15,10 +15,11 @@ export class PromisesRxjsComponent implements OnInit {
   }
 
   getUsers() {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       fetch('https://reqres.in/api/users')
       .then(res => res.json())
       .then(users => resolve(users.data))
+      .catch(err => reject(err))
     })
   }
 }

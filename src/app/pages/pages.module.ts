@@ -10,7 +10,8 @@ import { PagesComponent } from "./pages.component";
 import { ProgressComponent } from "./progress/progress.component";
 import { RouterModule } from "@angular/router";
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
-import { PromisesRxjsComponent } from "./promises-rxjs/promises-rxjs.component";
+import { PromisesComponent } from "./promises/promises.component";
+import { RxjsComponent } from "./rxjs/rxjs.component";
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { PromisesRxjsComponent } from "./promises-rxjs/promises-rxjs.component";
         ChartsComponent,
         ProgressComponent,
         AccountSettingsComponent,
-        PromisesRxjsComponent
+        PromisesComponent,
+        RxjsComponent
     ],
     imports: [
         CommonModule,
