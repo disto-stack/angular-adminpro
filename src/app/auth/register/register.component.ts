@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 
 import { equalPasswordsValidator } from '../validators/equalPasswords';
 
+import { UserService } from '../services/user.service';
+
 import {
   FormBuilder,
   FormControl,
   Validators,
   FormControlName,
 } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -34,12 +37,23 @@ export class RegisterComponent implements OnInit {
     }
   );
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {}
 
   registerUser() {
-    console.log(this.registerForm.value);
+    if (this.registerForm.invalid) {
+      return;
+    }
+
+    this.userService.createUser(this.registerForm.value).subscribe(
+      (response) => console.log(response),
+      (errorResponse: HttpErrorResponse) =>
+        console.error(errorResponse.error.message)
+    );
   }
 
   isFormControlInvalid(formControlName: string) {
@@ -47,5 +61,9 @@ export class RegisterComponent implements OnInit {
       this.registerForm.get(formControlName)?.invalid &&
       this.registerForm.get(formControlName)?.touched
     );
+  }
+
+  get invalidForm() {
+    return this.registerForm.invalid;
   }
 }
