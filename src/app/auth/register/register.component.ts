@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { equalPasswordsValidator } from '../validators/equalPasswords';
 
 import { UserService } from '../services/user.service';
 
-import {
-  FormBuilder,
-  FormControl,
-  Validators,
-  FormControlName,
-} from '@angular/forms';
-import { HttpErrorResponse } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -39,7 +36,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -50,10 +48,15 @@ export class RegisterComponent implements OnInit {
     }
 
     this.userService.createUser(this.registerForm.value).subscribe(
-      (response) => console.log(response),
+      (response) => {
+        Swal.fire('User created', 'User successfully created', 'success');
+        this.router.navigateByUrl('/login');
+      },
       (errorResponse: HttpErrorResponse) =>
-        console.error(errorResponse.error.message)
+        Swal.fire('Error', errorResponse.error.message, 'error')
     );
+
+    this.registerForm.reset();
   }
 
   isFormControlInvalid(formControlName: string) {
