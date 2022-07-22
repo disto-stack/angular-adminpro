@@ -8,9 +8,10 @@
       <form
         class="form-horizontal form-material"
         id="loginform"
-        (submit)="login()"
+        [formGroup]="loginForm"
+        (ngSubmit)="login()"
       >
-        <a href="javascript:void(0)" class="text-center db"
+        <a routerLink="/login" class="text-center db"
           ><img src="../assets/images/logo-icon.png" alt="Home" /><br /><img
             src="../assets/images/logo-text.png"
             alt="Home"
@@ -19,10 +20,15 @@
           <div class="col-xs-12">
             <input
               class="form-control"
-              type="text"
-              required=""
-              placeholder="Username"
+              type="email"
+              formControlName="email"
+              placeholder="Email"
             />
+          </div>
+          <div class="row">
+            <div class="col text-danger">
+              <p *ngIf="isFormControlInvalid('email')">The email is invalid</p>
+            </div>
           </div>
         </div>
         <div class="form-group">
@@ -30,9 +36,16 @@
             <input
               class="form-control"
               type="password"
-              required=""
+              formControlName="password"
               placeholder="Password"
             />
+          </div>
+          <div class="row">
+            <div class="col text-danger">
+              <p *ngIf="isFormControlInvalid('password')">
+                The password is invalid
+              </p>
+            </div>
           </div>
         </div>
         <div class="form-group row">
@@ -42,13 +55,11 @@
                 id="checkbox-signup"
                 type="checkbox"
                 class="filled-in chk-col-light-blue"
+                formControlName="remember"
               />
               <label for="checkbox-signup"> Remember me </label>
             </div>
-            <a
-              href="javascript:void(0)"
-              id="to-recover"
-              class="text-dark pull-right"
+            <a id="to-recover" class="text-dark pull-right"
               ><i class="fa fa-lock m-r-5"></i> Forgot pwd?</a
             >
           </div>
@@ -58,6 +69,7 @@
             <button
               class="btn btn-info btn-lg btn-block text-uppercase btn-rounded"
               type="submit"
+              [disabled]="invalidForm"
             >
               Log In
             </button>

@@ -1,6 +1,6 @@
 import { User } from '../user.model';
 
-export interface UserCreatedResponse {
+export interface CreatedUserResponse {
   ok: string;
   user: User;
   token: string;
