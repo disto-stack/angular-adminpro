@@ -12,7 +12,10 @@ import { UserService } from '../services/user.service';
 })
 export class LoginComponent implements OnInit {
   loginForm = this.formBuilder.group({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl(localStorage.getItem('email') || '', [
+      Validators.required,
+      Validators.email,
+    ]),
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
@@ -35,13 +38,15 @@ export class LoginComponent implements OnInit {
 
     this.userService.login(this.loginForm.value).subscribe(
       (response) => {
-        Swal.fire('Token', response.token, 'info');
+        if (this.loginForm.get('remember')?.value) {
+          localStorage.setItem('email', this.loginForm.get('email')?.value);
+        } else {
+          localStorage.removeItem('email');
+        }
       },
       (errorResponse: HttpErrorResponse) =>
         Swal.fire('Error', errorResponse.error.message, 'error')
     );
-
-    this.loginForm.reset();
   }
 
   isFormControlInvalid(formControlName: string) {

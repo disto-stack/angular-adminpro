@@ -55,8 +55,6 @@ export class RegisterComponent implements OnInit {
       (errorResponse: HttpErrorResponse) =>
         Swal.fire('Error', errorResponse.error.message, 'error')
     );
-
-    this.registerForm.reset();
   }
 
   isFormControlInvalid(formControlName: string) {
